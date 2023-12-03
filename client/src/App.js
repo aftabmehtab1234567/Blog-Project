@@ -1,13 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Login from './component/account/Login';
+import React, { useState } from "react";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Outlet,
+  Navigate,
+} from "react-router-dom";
+import Login from "./component/account/Login";
+import DataProvider from "./Context/Dataprovider";
+import Home from "./component/Home/Home";
+import Header from "./component/Header/Header";
+
+const PrivateRoute = ({ element }) => {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  return isAuthenticated ? <><Header />{element}</> : <Navigate replace to="/login" />;
+};
 
 function App() {
   return (
-    <div style={{ marginTop: '64px' }}>
-      <Login />
-    </div>
+    <DataProvider>
+      <BrowserRouter>
+        
+        <div style={{ marginTop: "64px" }}>
+          <Routes>
+            <Route path="/login" element={<Login />} />
+            <Route path="/home" element={<PrivateRoute element={<Home />} />} />
+            <Route path="/" element={<PrivateRoute element={<Home />} />} />
+          </Routes>
+        </div>
+      </BrowserRouter>
+    </DataProvider>
   );
 }
 

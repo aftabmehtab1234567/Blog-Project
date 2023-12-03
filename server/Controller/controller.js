@@ -36,7 +36,13 @@ export const loginUser = async (request, response) => {
             await newToken.save();
 
             // Handle success case
-            return response.status(200).json({ accessToken, refreshToken });
+            return response.status(200).json({ 
+                accessToken, 
+                refreshToken,
+                username: user.username,
+                name:user.name, 
+              });
+              
         } else {
             return response.status(400).json({ msg: 'Password does not match' });
         }

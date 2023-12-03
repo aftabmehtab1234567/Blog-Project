@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Box, TextField, Button, Typography } from '@mui/material';
 import styled from 'styled-components';
-
 import { userSignup, userLogin } from '../../services/api';
+import { DataContext } from '../../Context/Dataprovider';
+import { useNavigate } from 'react-router-dom';
 
 const Component = styled(Box)`
   width: 400px;
@@ -77,6 +78,8 @@ const signupInitialValue = {
 
 const Login = () => {
   const imageURL = 'https://www.sesta.it/wp-content/uploads/2021/03/logo-blog-sesta-trasparente.png';
+  const { setAccount } = useContext(DataContext);
+  const navigate = useNavigate();
   const [account, toggleAccount] = useState('login');
   const [loginData, setLoginData] = useState(loginInitialValue);
   const [signupData, setSignupData] = useState(signupInitialValue);
@@ -108,7 +111,7 @@ const Login = () => {
       // Handle error
     }
   };
-
+  const Login = ({ isUserAuthenticated }) => {
   const loginUser = async () => {
     try {
       let response = await userLogin(loginData);
@@ -117,16 +120,17 @@ const Login = () => {
       if (response) {
         sessionStorage.setItem('accessToken', `Bearer ${response.accessToken}`);
         sessionStorage.setItem('refreshToken', `Bearer ${response.refreshToken}`);
+        setAccount({ username: response.username, name: response.name });
+        navigate('/');
       } else {
         setError('Something went wrong');
       }
     } catch (error) {
       console.error('Error in login:', error);
-      // Handle error
       setError('Something went wrong');
     }
-  };
-
+  }
+};
   return (
     <Component>
       <Box>
