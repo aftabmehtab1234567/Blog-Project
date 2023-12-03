@@ -76,7 +76,7 @@ const signupInitialValue = {
   password: '',
 };
 
-const Login = () => {
+const Login = ({ isUserAuthenticated }) => {
   const imageURL = 'https://www.sesta.it/wp-content/uploads/2021/03/logo-blog-sesta-trasparente.png';
   const { setAccount } = useContext(DataContext);
   const navigate = useNavigate();
@@ -111,7 +111,7 @@ const Login = () => {
       // Handle error
     }
   };
-  const Login = ({ isUserAuthenticated }) => {
+  
   const loginUser = async () => {
     try {
       let response = await userLogin(loginData);
@@ -129,8 +129,8 @@ const Login = () => {
       console.error('Error in login:', error);
       setError('Something went wrong');
     }
-  }
-};
+  };
+
   return (
     <Component>
       <Box>
