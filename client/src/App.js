@@ -5,8 +5,8 @@ import DataProvider from "./Context/Dataprovider";
 import Home from "./component/Home/Home";
 import Header from "./component/Header/Header";
 
-const PrivateRoute = ({ isAuthenticated, children }) => {
-  return isAuthenticated ? (
+const PrivateRoute = ({ IsUserAuthenticated, children }) => {
+  return IsUserAuthenticated ? (
     <>
       <Header />
       <Outlet />
@@ -34,7 +34,7 @@ function App() {
             />
             <Route
               path="/"
-              element={<PrivateRoute isAuthenticated={isAuthenticated} />}
+              element={<Home/>}
             />
           </Routes>
         </div>
