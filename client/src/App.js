@@ -5,7 +5,7 @@ import DataProvider from "./Context/Dataprovider";
 import Home from "./component/Home/Home";
 import Header from "./component/Header/Header";
 
-const PrivateRoute = ({ IsUserAuthenticated, children }) => {
+const PrivateRoute = ({ IsUserAuthenticated, ...props}) => {
   return IsUserAuthenticated ? (
     <>
       <Header />
@@ -34,7 +34,7 @@ function App() {
             />
             <Route
               path="/"
-              element={<Home/>}
+              element={<Home />}
             />
           </Routes>
         </div>
