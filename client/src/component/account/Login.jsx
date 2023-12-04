@@ -76,7 +76,7 @@ const signupInitialValue = {
   password: '',
 };
 
-const Login = ({ isUserAuthenticated }) => {
+const Login = ({ IsUserAuthenticated }) => {
   const imageURL = 'https://www.sesta.it/wp-content/uploads/2021/03/logo-blog-sesta-trasparente.png';
   const { setAccount } = useContext(DataContext);
   const navigate = useNavigate();
@@ -121,6 +121,7 @@ const Login = ({ isUserAuthenticated }) => {
         sessionStorage.setItem('accessToken', `Bearer ${response.accessToken}`);
         sessionStorage.setItem('refreshToken', `Bearer ${response.refreshToken}`);
         setAccount({ username: response.username, name: response.name });
+        IsUserAuthenticated (true);
         navigate('/');
       } else {
         setError('Something went wrong');
