@@ -6,6 +6,7 @@ import Home from "./component/Home/Home";
 import Header from "./component/Header/Header";
 
 const PrivateRoute = ({ isAuthenticated, ...props }) => {
+  console.log('isAuthenticated',isAuthenticated);
   return isAuthenticated ? (
     <>
       <Header />

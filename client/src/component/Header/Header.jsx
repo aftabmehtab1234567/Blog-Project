@@ -15,17 +15,22 @@ const Nav = styled(Toolbar)`
   } 
 `;
 
-const Header = () => {
+const Header = ({ isAuthenticated }) => {
   return (
     <StyledAppBar>
       <Nav>
         <Link to='/'>Home</Link>
         <Link to='/about'>About</Link>
-        <Link to='/contact'>Contact</Link> 
-        <Link to='/login'>Logout</Link>
+        <Link to='/contact'>Contact</Link>
+        {isAuthenticated ? (
+          <Link to='/logout'>Logout</Link>
+        ) : (
+          <Link to='/login'>Login</Link>
+        )}
       </Nav>
     </StyledAppBar>
   );
 }
+
 
 export default Header;
