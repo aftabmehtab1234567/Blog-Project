@@ -5,8 +5,8 @@ import DataProvider from "./Context/Dataprovider";
 import Home from "./component/Home/Home";
 import Header from "./component/Header/Header";
 
-const PrivateRoute = ({ IsUserAuthenticated, ...props}) => {
-  return IsUserAuthenticated ? (
+const PrivateRoute = ({ isAuthenticated, ...props }) => {
+  return isAuthenticated ? (
     <>
       <Header />
       <Outlet />
@@ -17,7 +17,7 @@ const PrivateRoute = ({ IsUserAuthenticated, ...props}) => {
 };
 
 function App() {
-  const [isAuthenticated, IsUserAuthenticated] = useState(false);
+  const [isAuthenticated, setIsUserAuthenticated] = useState(false);
 
   return (
     <DataProvider>
@@ -26,7 +26,7 @@ function App() {
           <Routes>
             <Route
               path="/login"
-              element={<Login isUserAuthenticated={IsUserAuthenticated} />}
+              element={<Login isUserAuthenticated={setIsUserAuthenticated} />}
             />
             <Route
               path="/home"
