@@ -32,15 +32,10 @@ function App() {
             <Route
               path="/"
               element={<PrivateRoute isAuthenticated={isAuthenticated} />}
-            />
-            <Route
-              path="/home"
-              element={isAuthenticated ? <Home /> : null}
-            />
-            <Route
-              path="/create"
-              element={<Createpost isUserAuthenticated={setIsUserAuthenticated} />}
-            />
+            >
+              <Route path="/create" element={<Createpost isUserAuthenticated={setIsUserAuthenticated} />} />
+              <Route path="/home" element={isAuthenticated ? <Home /> : null} />
+            </Route>
           </Routes>
         </div>
       </BrowserRouter>
@@ -49,3 +44,5 @@ function App() {
 }
 
 export default App;
+
+
