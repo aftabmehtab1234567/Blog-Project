@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Table, TableHead, TableBody, TableRow, TableCell } from '@mui/material';
 import { Category } from '../../Data/Data';
-
+import {Link} from 'react-router-dom';
 export default function Categories() {
   // Assuming you have a posts array somewhere in your data
   const posts = [
@@ -12,9 +12,11 @@ export default function Categories() {
 
   return (
     <>
+    <Link to='/create'>
       <Button variant="text" style={{ backgroundColor: '#4CAF50', color: 'white', marginRight: '10px' }}>
         Create Blog
       </Button>
+      </Link>
       <Table>
         <TableHead>
           <TableRow>

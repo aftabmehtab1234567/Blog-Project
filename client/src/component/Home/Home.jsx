@@ -14,7 +14,7 @@ const Home = () => {
         </Grid>
         <Grid item lg={10} sm={10} xs={12}>
           {/* Add your post content here */}
-          Post
+          
         </Grid>
       </Grid>
     </>
