@@ -122,7 +122,7 @@ const Login = ({ isUserAuthenticated }) => {
         sessionStorage.setItem('refreshToken', `Bearer ${response.refreshToken}`);
         setAccount({ username: response.username, name: response.name });
         isUserAuthenticated (true);
-        navigate('/home');
+        navigate('/');
       } else {
         setError('Something went wrong');
       }

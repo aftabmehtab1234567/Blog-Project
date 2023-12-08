@@ -6,7 +6,7 @@ import Home from "./component/Home/Home";
 import Header from "./component/Header/Header";
 
 const PrivateRoute = ({ isAuthenticated, ...props }) => {
-  console.log('isAuthenticated',isAuthenticated);
+  console.log('isAuthenticated', isAuthenticated);
   return isAuthenticated ? (
     <>
       <Header />
@@ -30,14 +30,12 @@ function App() {
               element={<Login isUserAuthenticated={setIsUserAuthenticated} />}
             />
             <Route
-              path="/home"
+              path="/"
               element={<PrivateRoute isAuthenticated={isAuthenticated} />}
             />
-            <Route
-              path="/"
-              element={<Home />}
-            />
           </Routes>
+          {/* Render Home outside of Routes to always display it */}
+          {isAuthenticated && <Home />}
         </div>
       </BrowserRouter>
     </DataProvider>
